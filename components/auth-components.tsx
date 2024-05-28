@@ -1,23 +1,15 @@
 import { signIn, signOut } from "auth";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 export function SignIn({
   provider,
   ...props
 }: { provider?: string } & React.ComponentPropsWithRef<typeof Button>) {
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn(provider,{
-          redirect: true,
-          redirectTo: '/',
-          callbackUrl: '/',
-        });
-      }}
-    >
+    <Link href='/signin'>
       <Button {...props}>Sign In</Button>
-    </form>
+    </Link>
   );
 }
 
